@@ -1,0 +1,31 @@
+<div class="card-container">
+    <mat-card *ngIf="missionDetails">
+        <mat-card-header>
+          <mat-card-title>{{ missionDetails.mission_name }} ({{ missionDetails.launch_year }})</mat-card-title>
+          <mat-card-subtitle>Flight #: {{ missionDetails.flight_number }}</mat-card-subtitle>
+        </mat-card-header>
+      
+        <mat-card-content>
+          <img mat-card-image [src]="missionDetails.links.mission_patch_small" alt="Mission Patch" />
+          <p><strong>Details:</strong> {{ missionDetails.details || 'No details available.' }}</p>
+          <p><strong>Rocket:</strong> {{ missionDetails.rocket.rocket_name }} - {{ missionDetails.rocket.rocket_type }}</p>
+          <p><strong>Launch Success:</strong> {{ missionDetails.launch_success ? 'Successful' : 'Failed' }}</p>
+          <p><strong>Landing Success:</strong> {{ missionDetails.rocket.first_stage.cores[0].land_success ? 'Successful' : 'Failed' }}</p>
+      
+          <p><strong>Links:</strong></p>
+          <a mat-button href="{{ missionDetails.links.article_link }}" target="_blank">Article</a>
+          <a mat-button href="{{ missionDetails.links.wikipedia }}" target="_blank">Wikipedia</a>
+          <a mat-button href="{{ missionDetails.links.video_link }}" target="_blank">Video</a>
+          <div>
+            <button color="primary" mat-stroked-button [routerLink]="['/']">Back</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      
+  
+      <div *ngIf="!missionDetails">
+        <p>Loading mission details...</p>
+      </div>
+      </div>
+    
+    

@@ -1,0 +1,26 @@
+<mat-form-field appearance="fill">
+    <mat-label>Select Launch Year</mat-label>
+    <mat-select [(ngModel)]="selectedYear" (selectionChange)="onFilterChange()">
+      <mat-option value="0">All Years</mat-option>
+      <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Select Launch</mat-label>
+    <mat-select [(ngModel)]="selectedLaunchSuccess" (selectionChange)="onFilterChange()">
+      <mat-option value="">All Launches</mat-option>
+      <mat-option value="true">Successful</mat-option>
+      <mat-option value="false">Failed</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Select Landings</mat-label>
+    <mat-select [(ngModel)]="selectedLandingSuccess" (selectionChange)="onFilterChange()">
+      <mat-option value="">All Landings</mat-option>
+      <mat-option value="true">Successful</mat-option>
+      <mat-option value="false">Failed</mat-option>
+    </mat-select>
+  </mat-form-field>
+

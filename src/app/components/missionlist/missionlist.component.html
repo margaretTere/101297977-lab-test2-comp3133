@@ -1,0 +1,20 @@
+
+<div class="card-container">
+    <app-mission-filter [years]="years" (filtersSelected)="onFiltersSelected($event)"></app-mission-filter>
+<mat-card *ngFor="let mission of filteredLaunches">
+    <mat-card-title>Flight #: {{mission.flight_number}} <br/> Mission: {{ mission.mission_name }} ({{ mission.launch_year }})</mat-card-title>
+    <p>Details: {{ mission.details || 'No details available.' }}</p>
+    <img mat-card-image [src]="mission.links.mission_patch_small" alt="Mission Patch" />
+    <mat-card-subtitle>Rocket: {{ mission.rocket.rocket_name }} - {{ mission.rocket.rocket_type }}</mat-card-subtitle>
+    <p>Links:</p>
+    <a href="{{mission.links.mission_patch_small}}" target="_blank">Mission patch small</a>
+    <a href="{{mission.links.article_link}}" target="_blank">Article</a>
+    <a href="{{mission.links.wikipedia}}" target="_blank">Wikipedia</a>
+    <a href="{{mission.links.video_link}}" target="_blank">video</a>
+    <a [routerLink]="['/details', mission.flight_number]" target="_blank">View Details</a>
+
+    <div>
+        <button mat-raised-button color="primary" [routerLink]="['/details', mission.flight_number]">Details</button>
+    </div>
+  </mat-card>
+</div>
